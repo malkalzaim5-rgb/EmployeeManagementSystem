@@ -1,0 +1,48 @@
+@model EmployeeManagementSystem.Models.Salary
+
+@{
+    ViewData["Title"] = "Create Salary";
+}
+
+<div class="container mt-4">
+    <h2>Add Salary</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="mb-3">
+                    <label asp-for="EmployeeId" class="form-label">Employee</label>
+                    <select asp-for="EmployeeId" class="form-select" asp-items="ViewBag.EmployeeId">
+                        <option value="">-- Select Employee --</option>
+                    </select>
+                    <span asp-validation-for="EmployeeId" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="BasicSalary" class="form-label"></label>
+                    <input asp-for="BasicSalary" type="number" step="0.01" class="form-control" />
+                    <span asp-validation-for="BasicSalary" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Bonus" class="form-label"></label>
+                    <input asp-for="Bonus" type="number" step="0.01" class="form-control" />
+                    <span asp-validation-for="Bonus" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
